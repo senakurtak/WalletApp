@@ -14,6 +14,7 @@
 		B38D536728C623AB0064F4F4 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38D536628C623AB0064F4F4 /* Expense.swift */; };
 		B38D536928C6306B0064F4F4 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38D536828C6306B0064F4F4 /* Card.swift */; };
 		B38D536D28C765A30064F4F4 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38D536C28C765A30064F4F4 /* HomeScreen.swift */; };
+		B3BDC1A228C7BB9200891384 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC1A128C7BB9200891384 /* Test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		B38D536628C623AB0064F4F4 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		B38D536828C6306B0064F4F4 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		B38D536C28C765A30064F4F4 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		B3BDC1A128C7BB9200891384 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				B38D536C28C765A30064F4F4 /* HomeScreen.swift */,
+				B3BDC1A128C7BB9200891384 /* Test.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 				B38A046928C60C2E00835569 /* ContentView.swift in Sources */,
 				B38A046728C60C2E00835569 /* wallet_appApp.swift in Sources */,
 				B38D536928C6306B0064F4F4 /* Card.swift in Sources */,
+				B3BDC1A228C7BB9200891384 /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,10 +13,10 @@ struct HomeScreen: View {
         .init(cardImage: "Card1"),
         .init(cardImage: "Card2")
     ]
-    
     @Namespace var animation
     @State var selectedCard: Card?
     @State var showDetail : Bool = false
+    @State var showDetailContent : Bool = false
     var body: some View {
         VStack{
             VStack(alignment: .leading, spacing: 6){
@@ -60,11 +60,12 @@ struct HomeScreen: View {
             Color("BG")
                 .ignoresSafeArea()
         }
-//        .overlay {
-//            if let selectedCard,showDetail{
-//                DetailView(card: selectedCard)
+        .overlay{
+//            if let selectedCard, showDetail {
+                DetailView(card: selectedCard!)
+                    .transition(.asymmetric(insertion: .identity, removal: .offset(y:1)))
 //            }
-//        }
+        }
     }
     @ViewBuilder
     func CardsScrollView()->some View{
@@ -73,20 +74,28 @@ struct HomeScreen: View {
                 ForEach(cards){card in
                     GeometryReader{proxy in
                         let size = proxy.size
-                        Image(card.cardImage)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .matchedGeometryEffect(id: card.id, in: animation)
-                            .rotationEffect(.init(degrees: -90))
-                            .frame(width: size.height, height: size.width)
-                            .frame(width: size.width , height: size.height)
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 0.8, blendDuration: 0.8)){
-                                    selectedCard = card
-                                    showDetail = true
+                        
+                        if selectedCard?.id == card.id && showDetail{
+                            Rectangle()
+                                .fill(.clear)
+                                .frame(width: size.width, height: size.height)
+                        } else {
+                            
+                            Image(card.cardImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .matchedGeometryEffect(id: card.id, in: animation)
+                                .rotationEffect(.init(degrees: -90))
+                                .frame(width: size.height, height: size.width)
+                                .frame(width: size.width , height: size.height)
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 0.8, blendDuration: 0.8)){
+                                        selectedCard = card
+                                        showDetail = true
+                                    }
                                 }
-                            }
+                        }
                     }
                     .frame(width: 300)
                 }
@@ -101,6 +110,9 @@ struct HomeScreen: View {
         VStack{
             HStack{
                 Button{
+                    //                    withAnimation(.easeInOut(duration: 0.4)){
+                    //                        showDetailContent = false
+                    //                    }
                     withAnimation(.easeInOut(duration: 0.5)){
                         showDetail = false
                     }
@@ -119,11 +131,19 @@ struct HomeScreen: View {
             Image(card.cardImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .matchedGeometryEffect(id: card.id, in: animation)
+                .rotationEffect(.init(degrees: showDetailContent ? 0 : -90))
                 .frame(height: 220)
         }
         .padding(15)
         .frame(maxWidth: .infinity, minHeight: .infinity, alignment: .top)
+        .onAppear{
+            withAnimation(.easeInOut(duration: 0.5)){
+                showDetailContent = true
+            }
+        }
     }
+    
 }
 
 struct HomeScreen_Previews: PreviewProvider {
