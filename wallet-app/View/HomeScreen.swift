@@ -61,7 +61,7 @@ struct HomeScreen: View {
                 .ignoresSafeArea()
         }
         .overlay{
-//            if let selectedCard, showDetail {
+            if let selectedCard, showDetail {
                 DetailView(card: selectedCard!)
                     .transition(.asymmetric(insertion: .identity, removal: .offset(y:1)))
 //            }
